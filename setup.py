@@ -21,34 +21,8 @@ install_requires = [
     "scikit-image",
     "scipy",
     "tqdm",
+    "onnxruntime-gpu"
 ]
-
-extras_require = {
-    "dev": [
-        "bandit",
-        "black",
-        "flake8",
-        "imagehash",
-        "isort",
-        "mypy",
-        "pytest",
-        "setuptools",
-        "twine",
-        "wheel",
-    ],
-    "gpu": ["onnxruntime-gpu"],
-    "cli": [
-        "aiohttp",
-        "asyncer",
-        "click",
-        "fastapi",
-        "filetype",
-        "gradio",
-        "python-multipart",
-        "uvicorn",
-        "watchdog",
-    ],
-}
 
 entry_points = {
     "console_scripts": [
