@@ -14,7 +14,6 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 install_requires = [
     "jsonschema",
     "numpy",
-    "onnxruntime",
     "opencv-python-headless",
     "pillow",
     "pooch",
