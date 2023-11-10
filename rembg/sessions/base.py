@@ -15,6 +15,7 @@ class BaseSession:
         model_name: str,
         sess_opts: ort.SessionOptions,
         providers=None,
+        cache_dir=None,
         *args,
         **kwargs
     ):
@@ -31,8 +32,18 @@ class BaseSession:
         else:
             self.providers.extend(_providers)
 
+        model_path = ""
+        if cache_dir:
+            model_path = os.path.join(cache_dir, f"{self.name()}.onnx")
+            if not os.path.exists(model_path):
+                model_path = str(self.__class__.download_models(*args, **kwargs))
+                os.makedirs(cache_dir, exist_ok=True)
+                os.rename(model_path, os.path.join(cache_dir, f"{self.name()}.onnx"))
+                model_path = os.path.join(cache_dir, f"{self.name()}.onnx")
+        else:
+            model_path = str(self.__class__.download_models(*args, **kwargs))
         self.inner_session = ort.InferenceSession(
-            str(self.__class__.download_models(*args, **kwargs)),
+            model_path,
             providers=self.providers,
             sess_options=sess_opts,
         )

@@ -18,7 +18,6 @@ install_requires = [
     "opencv-python-headless",
     "pillow",
     "pooch",
-    "pymatting",
     "scikit-image",
     "scipy",
     "tqdm",
