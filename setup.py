@@ -59,7 +59,6 @@ setup(
     packages=find_packages(),
     install_requires=install_requires,
     entry_points=entry_points,
-    extras_require=extras_require,
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
 )
